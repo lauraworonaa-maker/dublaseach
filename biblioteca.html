@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pratique dublagem na Biblioteca de Vozes do DublaSeach.">
+  <title>Biblioteca de Vozes | DublaSeach</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="library-page">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="./index.html#home">🎙️ Dubla<span>Seach</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuBiblioteca" aria-controls="menuBiblioteca" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menuBiblioteca">
+        <ul class="navbar-nav ms-auto">
+          <li><a class="nav-link" href="./index.html#home">Home</a></li>
+          <li><a class="nav-link" href="./index.html#profissionais">Profissionais</a></li>
+          <li><a class="nav-link" href="./index.html#iniciantes">Iniciantes</a></li>
+          <li><a class="nav-link" href="./index.html#fandubs">Fandubs</a></li>
+          <li><a class="nav-link" href="./index.html#aprenda">Aprenda</a></li>
+          <li><a class="nav-link" href="./index.html#secao-roteiros">Roteiros</a></li>
+          <li><a class="nav-link active" href="./biblioteca.html" aria-current="page">Biblioteca</a></li>
+          <li><a class="nav-link" href="./index.html#jogos">Jogos</a></li>
+          <li><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="library-hero">
+    <div class="container">
+      <p class="eyebrow">TREINO DE INTERPRETAÇÃO</p>
+      <h1>Biblioteca de Vozes</h1>
+      <p>Explore personagens, pratique sua interpretação e guarde suas gravações para ouvir quando quiser.</p>
+      <a class="btn btn-light fw-bold" href="#catalogoVozes">Explorar personagens</a>
+    </div>
+  </header>
+
+  <main class="container library-main">
+    <section id="catalogoVozes" aria-labelledby="catalogoTitulo">
+      <div class="library-section-heading">
+        <div><p class="eyebrow text-primary">ESCOLHA UMA CENA</p><h2 id="catalogoTitulo">Perfis para interpretar</h2></div>
+        <p id="voiceCount" class="text-secondary mb-0" aria-live="polite"></p>
+      </div>
+      <form class="voice-filters" id="voiceFilters" role="search">
+        <label class="visually-hidden" for="voiceSearch">Buscar perfil</label>
+        <input class="form-control" id="voiceSearch" type="search" placeholder="Buscar personagem, perfil ou frase...">
+        <label class="visually-hidden" for="categoryFilter">Filtrar categoria</label>
+        <select class="form-select" id="categoryFilter"><option value="">Todas as categorias</option></select>
+        <label class="visually-hidden" for="emotionFilter">Filtrar emoção</label>
+        <select class="form-select" id="emotionFilter"><option value="">Todas as emoções</option></select>
+        <label class="visually-hidden" for="styleFilter">Filtrar estilo vocal</label>
+        <select class="form-select" id="styleFilter"><option value="">Todos os estilos vocais</option></select>
+      </form>
+      <div class="voice-grid" id="voiceGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="voice-studio" id="voiceStudio" aria-labelledby="studioTitle" hidden>
+      <div class="studio-heading">
+        <div><p class="eyebrow text-primary">SEU ESTÚDIO</p><h2 id="studioTitle">Teste esta interpretação</h2></div>
+        <button type="button" class="btn-close" id="closeStudio" aria-label="Fechar estúdio"></button>
+      </div>
+      <div class="selected-voice" id="selectedVoice"></div>
+      <div class="recording-tools">
+        <div class="recording-status" id="recordingStatus" role="status" aria-live="polite">Pronto para gravar. O microfone só será solicitado quando você iniciar.</div>
+        <div class="recording-clock" id="recordingClock" aria-label="Duração da gravação">00:00</div>
+        <div class="recording-actions">
+          <button class="btn btn-danger" type="button" id="startRecording">● Iniciar gravação</button>
+          <button class="btn btn-outline-secondary" type="button" id="stopRecording" disabled>■ Encerrar gravação</button>
+          <button class="btn btn-outline-primary" type="button" id="redoRecording" disabled>↻ Gravar novamente</button>
+        </div>
+        <audio id="recordingPlayback" controls hidden aria-label="Reproduzir sua gravação"></audio>
+        <p class="recording-limit">Limite: 45 segundos. Suas gravações ficam salvas neste navegador.</p>
+      </div>
+      <section class="recording-history" aria-labelledby="recordingHistoryTitle">
+        <h3 id="recordingHistoryTitle">Histórico de gravações</h3>
+        <p class="text-secondary">Gravações salvas neste navegador. Use o ícone da lixeira para apagar uma.</p>
+        <div id="recordingHistory" class="recording-history-list" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+  <footer class="py-4"><div class="container d-flex flex-wrap justify-content-between gap-3"><span>© 2026 DublaSeach</span><a href="./index.html#sobre">Sobre o projeto</a><span>Treine no seu ritmo.</span></div></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./biblioteca.js"></script>
+</body>
+</html>

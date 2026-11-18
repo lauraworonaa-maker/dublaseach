@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DublaSeach | Plataforma de Dublagem</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#home">🎙️ Dubla<span>Seach</span></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#profissionais">Profissionais</a></li>
+        <li><a class="nav-link" href="#iniciantes">Iniciantes</a></li>
+        <li><a class="nav-link" href="#fandubs">Fandubs</a></li>
+        <li><a class="nav-link" href="#aprenda">Aprenda</a></li>
+        <li><a class="nav-link" href="#secao-roteiros">Roteiros</a></li>
+        <li><a class="nav-link" href="./biblioteca.html">Biblioteca</a></li>
+        <li><a class="nav-link" href="#jogos">Jogos</a></li>
+        <li><a class="nav-link" href="#sobre">Sobre</a></li>
+      </ul>
+      <button class="btn btn-outline-light ms-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="container text-center">
+    <div class="hero-card">
+      <p class="badge-site">PLATAFORMA DE DUBLAGEM</p>
+      <h1>Onde <span>a voz</span> encontra seu personagem.</h1>
+      <p class="lead">Conheça dubladores, descubra novos talentos e encontre um espaço para desenvolver sua voz.</p>
+      <div class="search-box mx-auto">
+        <input id="mainSearch" type="search" placeholder="Pesquise um dublador, personagem ou obra..." aria-label="Pesquisar dubladores, personagens ou obras">
+        <button onclick="buscar()">🔎 Buscar</button>
+      </div>
+      <div class="mt-4">
+        <a href="#profissionais" class="btn btn-primary btn-lg me-2">Explorar dubladores</a>
+        <a href="#iniciantes" class="btn btn-outline-light btn-lg">Sou iniciante</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="searchResults" class="search-results py-5" aria-live="polite" hidden>
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">BUSCA</p>
+      <h2 id="searchResultsTitle">Resultados da busca</h2>
+      <p id="searchResultsCount"></p>
+    </div>
+    <div id="searchResultsGrid" class="row g-4"></div>
+  </div>
+</section>
+
+<main>
+<section class="py-5" id="profissionais">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">VOZES EM DESTAQUE</p>
+      <h2>Dubladores em destaque</h2>
+      <p>Consulte créditos selecionados e as fontes publicadas para cada perfil.</p>
+    </div>
+    <div class="row g-4" id="professionalCards"></div>
+  </div>
+</section>
+
+<section class="py-5 dark-section" id="iniciantes">
+  <div class="container">
+    <div class="section-title text-light">
+      <p class="eyebrow">NOVOS TALENTOS</p>
+      <h2>Espaço para iniciantes</h2>
+      <p>Monte seu perfil, mostre seu portfólio e encontre projetos.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="feature-card"><span>🎭</span><h4>Seu perfil de voz</h4><p>Escolha categorias de voz, preferências e disponibilidade.</p><button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#cadastroModal">Criar perfil</button></div></div>
+      <div class="col-md-4"><div class="feature-card"><span>🎬</span><h4>Mural de Fandubs</h4><p>Publique demonstrações e construa seu portfólio.</p><a href="#fandubs" class="btn btn-sm btn-light">Ver mural</a></div></div>
+      <div class="col-md-4"><div class="feature-card"><span>🔎</span><h4>Encontre uma voz</h4><p>Filtre talentos por categoria, estilo e disponibilidade.</p><button class="btn btn-sm btn-light" onclick="filtrarVozes()">Encontrar vozes</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" id="fandubs">
+  <div class="container">
+    <div class="section-title"><p class="eyebrow">MURAL</p><h2>Fandubs recentes</h2><p>Uma vitrine para quem está praticando e criando.</p></div>
+    <div class="row g-4" id="fandubCards"></div>
+  </div>
+</section>
+
+<section class="py-5 gradient-section" id="aprenda">
+  <div class="container">
+    <div class="section-title text-light"><p class="eyebrow">DESENVOLVA SUA VOZ</p><h2>Aprenda e pratique</h2><p>Dicas e materiais para quem quer começar na dublagem.</p></div>
+    <div class="row g-4">
+      <div class="col-md-3"><div class="info-card"><b>🎙️</b><h5>Dicção</h5><p>Exercícios para melhorar clareza e articulação.</p></div></div>
+      <div class="col-md-3"><div class="info-card"><b>🫁</b><h5>Respiração</h5><p>Práticas de respiração para gravações.</p></div></div>
+      <div class="col-md-3"><div class="info-card"><b>🎭</b><h5>Interpretação</h5><p>Entenda intenção, emoção e personagem.</p></div></div>
+      <div class="col-md-3"><div class="info-card"><b>📜</b><h5>Roteiro da semana</h5><p>Escolha uma cena e pratique sua interpretação.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 scripts-section" id="secao-roteiros">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow text-primary">PRATIQUE SUA INTERPRETAÇÃO</p>
+      <h2>🎭 Gerador infinito de roteiros</h2>
+      <p>Combine personagens, situações e falas para treinar sua voz para jogos.</p>
+      <button class="btn btn-primary btn-lg" id="btn-gerar" type="button">🎰 Gerar novo desafio</button>
+    </div>
+    <article class="script-card" id="card-roteiro" aria-live="polite" hidden>
+      <div class="script-card-actions">
+        <button class="btn btn-outline-primary" id="btn-trocar-roteiro" type="button">🔄 Trocar roteiro</button>
+        <button class="btn btn-outline-primary" id="btn-pagina-anterior" type="button" disabled>← Página anterior</button>
+        <button class="btn btn-primary" id="btn-proxima-pagina" type="button">📖 Próxima página do roteiro</button>
+      </div>
+      <div class="generated-script" id="roteiro-gerado">
+        <h3>🎬 Cena para interpretar</h3>
+        <div id="txt-roteiro" class="generated-script-lines"></div>
+      </div>
+      <div class="script-tag-wrap"><span class="script-tag">#TreinoDeGames</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="py-5" id="jogos">
+  <div class="container">
+    <div class="game-card row g-0 align-items-stretch mb-5" aria-labelledby="quemDublaCardTitle">
+      <div class="col-md-4 game-card-art" role="img" aria-label="Microfone diante de silhuetas de personagens animados"><span aria-hidden="true">🎙️🎭</span></div>
+      <div class="col-md-8 game-card-copy">
+        <span class="quiz-kicker">QUIZ DE CONHECIMENTOS</span>
+        <h3 id="quemDublaCardTitle">Quem Dubla Esse Personagem?</h3>
+        <p>Você conhece as vozes dos seus personagens favoritos? Descubra se consegue identificar os dubladores brasileiros neste desafio!</p>
+        <a class="btn btn-primary" href="./quem-dubla-quiz.html">Jogar agora</a>
+      </div>
+    </div>
+    <div class="section-title">
+      <p class="eyebrow text-primary">DESAFIO DE DUBLAGEM</p>
+      <h2>Quiz DublaSeach: Teste seus conhecimentos sobre dublagem!</h2>
+      <p>10 perguntas, 10 pontos por acerto. Escolha uma alternativa e avance no seu ritmo.</p>
+    </div>
+    <div class="quiz-box quiz-app" id="dublaQuiz" aria-labelledby="quizTitle">
+      <div class="quiz-topline"><span class="quiz-kicker">QUIZ DE DUBLAGEM</span><span id="quizProgressText" class="quiz-progress-text">Pergunta 1 de 10</span></div>
+      <div class="progress quiz-progress" role="progressbar" aria-label="Progresso do quiz" aria-valuemin="0" aria-valuemax="10" aria-valuenow="1"><div id="quizProgressBar" class="progress-bar"></div></div>
+      <div id="quizPlay">
+        <h3 id="quizTitle" class="quiz-question"></h3>
+        <fieldset class="quiz-options" id="quizOptions"><legend class="visually-hidden">Escolha uma alternativa</legend></fieldset>
+        <p id="quizNotice" class="quiz-notice" aria-live="polite"></p>
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-outline-primary" id="quizPrevious">Anterior</button>
+          <button type="button" class="btn btn-primary" id="quizNext">Próxima</button>
+          <button type="button" class="btn btn-primary" id="quizFinish" hidden>Finalizar quiz</button>
+        </div>
+      </div>
+      <div id="quizResult" class="quiz-final" hidden aria-live="polite"></div>
+    </div>
+  </div>
+</section><section class="py-5 dark-section" id="sobre">
+  <div class="container text-light">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="eyebrow">SOBRE NÓS</p>
+        <h2>Três estudantes, uma ideia e muitas vozes.</h2>
+        <p>O DublaSeach surgiu em uma conversa entre três estudantes de tecnologia interessados em criar uma plataforma para aproximar profissionais, iniciantes e fãs de dublagem.</p>
+        <p>A proposta é ajudar jovens e adultos que desejam conhecer a área, praticar, divulgar trabalhos e encontrar oportunidades. O projeto pretende receber atualizações periódicas para melhorar a experiência e facilitar o acesso.</p>
+      </div>
+      <div class="col-lg-5"><div class="about-box">🎙️<br><strong>DublaSeach</strong><br><small>Conectando talentos através da voz.</small></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="py-4">
+  <div class="container d-flex flex-wrap justify-content-between gap-3">
+    <span>© 2026 DublaSeach</span><span>Instagram • TikTok • YouTube</span><span>🛡️ Segurança • Denúncias • Bloqueio</span>
+  </div>
+</footer>
+
+<div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5>Entrar no DublaSeach</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><input class="form-control mb-3" placeholder="E-mail"><input class="form-control mb-3" type="password" placeholder="Senha"><button class="btn btn-primary w-100" onclick="avisar('Login demonstrativo!')">Entrar</button></div></div></div></div>
+<div class="modal fade" id="cadastroModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5>Criar perfil</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row g-3"><div class="col-md-6"><input class="form-control" placeholder="Nome de usuário"></div><div class="col-md-6"><select class="form-select"><option>Tipo de perfil</option><option>Dublador iniciante</option><option>Dublador profissional</option><option>Fã</option></select></div><div class="col-md-6"><input class="form-control" placeholder="Categoria de voz"></div><div class="col-md-6"><select class="form-select"><option>Disponibilidade</option><option>Disponível</option><option>Indisponível</option></select></div><div class="col-12"><textarea class="form-control" rows="3" placeholder="Conte um pouco sobre você"></textarea></div><div class="col-12"><button class="btn btn-primary" onclick="avisar('Perfil criado de forma demonstrativa!')">Cadastrar</button></div></div></div></div></div>
+<!-- Fecha o modal de cadastro antes de declarar o modal de perfil. -->
+</div>
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <div class="modal-content profile-modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="profileModalTitle">Perfil do profissional</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar perfil"></button>
+      </div>
+      <div class="modal-body" id="profileModalContent"></div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar perfil</button></div>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast-message"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
